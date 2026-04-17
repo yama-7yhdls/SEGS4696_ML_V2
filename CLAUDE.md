@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-This is a SEHS4696 (Machine Learning for Data Mining) group project at Hong Kong Polytechnic University. The goal is to predict job salaries using ML regression models on `job_salary_prediction_dataset.csv` (250,000 rows). The primary deliverable is `SEHS4696_GP.ipynb`, designed to run in **Google Colab**.
+This is a SEHS4696 (Machine Learning for Data Mining) group project at Hong Kong Polytechnic University. The primary deliverable is `SEHS4696_GP.ipynb`, designed to run in **Google Colab**.
+
+**Real-world problem:** A recruitment agency needs to provide accurate salary ranges across different industries to serve both employers (budgeting and compensation packages) and job seekers (setting realistic salary expectations in negotiations). The model output should therefore be useful as a salary range, not just a single point estimate.
 
 ## Running the Notebook
 
@@ -34,11 +36,12 @@ The notebook follows a strict linear pipeline — cells must be run top to botto
 
 ## Key Design Decisions
 
-- `remote_work` column is dropped before encoding (currently undocumented — add justification if kept or removed)
+- `remote_work` should **not** be dropped — remote vs. hybrid vs. on-site directly affects salary expectations and is central to the recruitment agency use case
 - One-hot encoding uses `drop_first=True` to avoid multicollinearity
 - Train/test split is 60/40 (not the typical 80/20) — justified by the large dataset size (100k test samples is still substantial)
-- Evaluation metrics: R² (explained variance) and MAE (interpretable dollar error)
+- Evaluation metrics: R² (explained variance) and MAE (interpretable dollar error — agencies can quote "±$X" to clients)
 - No `StandardScaler` applied — tree models don't require it; Linear Regression could benefit
+- Demo prediction cell should output a **salary range** (e.g. predicted ± MAE) to match the agency's actual use case, not just a single value
 
 ## Known Issues
 
