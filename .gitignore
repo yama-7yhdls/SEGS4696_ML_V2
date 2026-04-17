@@ -1,0 +1,14 @@
+# Dataset (large file)
+job_salary_prediction_dataset.csv
+
+# Local Claude settings
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(/Users/yamalam/github/yama-7yhdls/SEGS4696_ML_V2/*)"
+    ]
+  }
+}
